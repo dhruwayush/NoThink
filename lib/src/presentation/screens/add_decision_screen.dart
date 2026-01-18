@@ -179,7 +179,46 @@ class _AddDecisionScreenState extends ConsumerState<AddDecisionScreen> {
                         ),
                        IconButton(
                          icon: const Icon(Icons.add, color: AppTheme.textSlate400),
-                         onPressed: () {}, // Stub for adding tags
+                         onPressed: () {
+                           showDialog(
+                             context: context,
+                             builder: (context) {
+                               String newTag = "";
+                               return AlertDialog(
+                                 backgroundColor: AppTheme.surfaceDark,
+                                 title: const Text("Add New Tag", style: TextStyle(color: Colors.white)),
+                                 content: TextField(
+                                   autofocus: true,
+                                   style: const TextStyle(color: Colors.white),
+                                   onChanged: (v) => newTag = v,
+                                   decoration: const InputDecoration(
+                                     hintText: "Tag name",
+                                     hintStyle: TextStyle(color: AppTheme.textSlate400),
+                                     enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppTheme.primary)),
+                                   ),
+                                 ),
+                                 actions: [
+                                   TextButton(
+                                     onPressed: () => Navigator.pop(context),
+                                     child: const Text("Cancel", style: TextStyle(color: AppTheme.textSlate400)),
+                                   ),
+                                   TextButton(
+                                     onPressed: () {
+                                       if (newTag.isNotEmpty) {
+                                         setState(() {
+                                           _tags.add(newTag);
+                                           _selectedTag = newTag;
+                                         });
+                                       }
+                                       Navigator.pop(context);
+                                     },
+                                     child: const Text("Add", style: TextStyle(color: AppTheme.primary)),
+                                   ),
+                                 ],
+                               );
+                             },
+                           );
+                         }, 
                        ),
                     ],
                   ),

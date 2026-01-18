@@ -18,6 +18,7 @@ class OpenRouterService {
       print('WARNING: OpenRouter API Key missing.');
       return null;
     }
+    print('DEBUG: Using OpenRouter Key: ${apiKey.substring(0, 15)}...');
 
     try {
       final response = await http.post(

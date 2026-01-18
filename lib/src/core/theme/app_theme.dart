@@ -27,7 +27,7 @@ class AppTheme {
         background: backgroundDark,
       ),
       textTheme: baseTextTheme.copyWith(
-        displayLarge: baseTextTheme.displayLarge?.copyWith(fontWeight: FontWeight.bold),
+        displayLarge: baseTextTheme.displayLarge?.copyWith(fontWeight: FontWeight.bold, letterSpacing: -3.0),
         titleLarge: baseTextTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
         bodyLarge: baseTextTheme.bodyLarge?.copyWith(color: textWhite),
         bodyMedium: baseTextTheme.bodyMedium?.copyWith(color: textSlate300),
